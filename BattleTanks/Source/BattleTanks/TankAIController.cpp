@@ -12,7 +12,7 @@ void ATankAIController::BeginPlay()
 
 	auto PlayerTank = GetPlayerTank();
 	if (!PlayerTank) { UE_LOG(LogTemp, Warning, TEXT("AI Controller not found a target.")); }
-	else { UE_LOG(LogTemp, Warning, TEXT("AI is targeting."), *(PlayerTank->GetName())); }
+	else { UE_LOG(LogTemp, Warning, TEXT("AI is targeting %s."), *(PlayerTank->GetName())); }
 }
 
 ATank* ATankAIController::GetControlledTank() const
@@ -22,5 +22,5 @@ ATank* ATankAIController::GetControlledTank() const
 
 ATank* ATankAIController::GetPlayerTank() const
 {
-	return Cast<ATank>(PlayerPawn);
+	return Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 }
