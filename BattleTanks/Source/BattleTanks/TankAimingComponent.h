@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
-//Forward declaration
+//Forward declarations
+class UTankTurret;
 class UTankBarrel; 
 
 //Holds barrels properties
@@ -20,8 +20,7 @@ public:
 	UTankAimingComponent();
 
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	// TODO add SetTurretReference()
+	void SetTurretReference(UTankTurret* TurretToSet);
 
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
@@ -29,4 +28,6 @@ private:
 	void MoveBarrelTowards(FVector AimDirection);
 
 	UTankBarrel* Barrel = nullptr;
+
+	UTankTurret* Turret = nullptr;
 };

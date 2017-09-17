@@ -4,6 +4,7 @@
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
 #include "GameFramework/Controller.h"
+#include "Tank.h"
 
 void ATankPlayerController_CPP::BeginPlay()
 {
