@@ -4,6 +4,7 @@
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/World.h"
 #include "TankBarrel.h"
 
 // Sets default values for this component's properties
@@ -38,10 +39,18 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	);
 	if(bHaveAimSolution)
 	{
+		//UE_LOG(LogTemp, Warning, TEXT("Out launch vector: %s"), *OutLaunchVelocity.ToString())
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		//UE_LOG(LogTemp, Warning, TEXT("Aim direction pre rotator: %s"), *AimDirection.ToString())
 		MoveBarrelTowards(AimDirection);
+		auto Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f Aim solution found."), Time);
 		//Move the tank
+	}
+	else
+	{
+		auto Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f No aim solve found."), Time); 
 	}
 }
 

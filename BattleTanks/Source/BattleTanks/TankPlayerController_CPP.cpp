@@ -19,8 +19,6 @@ void ATankPlayerController_CPP::BeginPlay()
 void ATankPlayerController_CPP::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	//UE_LOG(LogTemp, Warning, TEXT("Player Controller ticking"));
 	AimTowardsCrosshair();
 }
 
@@ -53,7 +51,7 @@ bool ATankPlayerController_CPP::bGetSightRayHitLocation(FVector& OutHitLocation)
 	FVector LookDirection;
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("Look direction is: %s"), *LookDirection.ToString());
+		//Look direction definitely works
 		//Linetrace through crosshair
 		GetLookVectorHitLocation(LookDirection, OutHitLocation);
 		return true;
