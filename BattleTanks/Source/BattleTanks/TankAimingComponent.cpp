@@ -18,7 +18,6 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet) 
 {
 	if (!BarrelToSet) { return; }
