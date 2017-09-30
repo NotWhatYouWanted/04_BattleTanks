@@ -4,8 +4,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
-
 //Forward declarations
+class UTankMovementComponent;
 class UTankTurret;
 class UTankAimingComponent;
 class UTankBarrel;
@@ -34,6 +34,8 @@ public:
 protected:
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
+	UPROPERTY(BlueprintReadOnly)
+		UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
 
