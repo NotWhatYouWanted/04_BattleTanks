@@ -7,21 +7,23 @@
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController_CPP.generated.h" //Must be last include!!
 
-class ATank; //Forward declaration
- 
+//Forward declaration
+class UTankAimingComponent;
 
 UCLASS()
 class BATTLETANKS_API ATankPlayerController_CPP : public APlayerController
 {
 	GENERATED_BODY()
-	
+
+protected:
+	UFUNCTION(BlueprintImplementableEvent, Category = Setup)
+		void FoundAimingComponent(UTankAimingComponent* AimCompRef);
+
 private:
 	
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaTime) override;
-
-	ATank* GetControlledTank() const;
 
 	//Start the tank moving barrel to crosshair
 	void AimTowardsCrosshair();
