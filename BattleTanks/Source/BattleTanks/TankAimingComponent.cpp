@@ -17,6 +17,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::BeginPlay()
 {
+	//Sets first fire available after initial reload
 	LastFireTime = FPlatformTime::Seconds();
 }
 
@@ -25,7 +26,7 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	if ( (FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds) 
 	{ FiringState = EFiringState::Reloading; }
 	else if (IsBarrelMoving()) 
-	{ FiringState = EFiringState::Aiming; }
+	{ FiringState = EFiringState::Aiming; }  //TODO Fix Aiming state not appearing after 1st reload
 	else 
 	{ FiringState = EFiringState::Locked; }
 }
