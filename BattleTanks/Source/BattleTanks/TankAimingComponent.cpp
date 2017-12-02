@@ -26,7 +26,7 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	if ( (FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds) 
 	{ FiringState = EFiringState::Reloading; }
 	else if (IsBarrelMoving()) 
-	{ FiringState = EFiringState::Aiming; }  //TODO Fix Aiming state not appearing after 1st reload
+	{ FiringState = EFiringState::Aiming; }
 	else 
 	{ FiringState = EFiringState::Locked; }
 }
@@ -86,7 +86,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 bool UTankAimingComponent::IsBarrelMoving()
 {
 	if (!ensure(Barrel)) { return false; }
-	return Barrel->GetForwardVector().Equals(AimDirection, 0.01);
+	return !Barrel->GetForwardVector().Equals(AimDirection, 0.01);
 }
 
 void UTankAimingComponent::Fire()
