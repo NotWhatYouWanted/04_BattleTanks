@@ -28,7 +28,8 @@ void ATankPlayerController_CPP::AimTowardsCrosshair()
 	if (!ensure(AimingComponent)) { return; }
 
 	FVector HitLocation; //Out parameter
-	if (bGetSightRayHitLocation(HitLocation))
+	bool bGotHitLocation = bGetSightRayHitLocation(HitLocation);
+	if (bGotHitLocation)
 	{
 		AimingComponent->AimAt(HitLocation);
 	}
@@ -49,8 +50,7 @@ bool ATankPlayerController_CPP::bGetSightRayHitLocation(FVector& OutHitLocation)
 	{
 		//Look direction definitely works
 		//Linetrace through crosshair
-		GetLookVectorHitLocation(LookDirection, OutHitLocation);
-		return true;
+		return GetLookVectorHitLocation(LookDirection, OutHitLocation);
 	}
 	return false;
 }
