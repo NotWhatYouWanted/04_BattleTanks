@@ -14,7 +14,8 @@ enum class EFiringState : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	OutOfAmmo
 };
 
 //Holds barrels properties
@@ -33,6 +34,9 @@ public:
 		void Fire();
 
 	EFiringState GetFiringState() const;
+
+	UFUNCTION(BlueprintCallable, Category = Custom)
+		int GetAmmoLeft() const;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = State)
@@ -65,4 +69,6 @@ private:
 		float ReloadTimeInSeconds = 3.0;
 
 	double LastFireTime = 0.0;
+
+	int AmmoLeft = 5;
 };
