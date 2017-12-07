@@ -42,7 +42,7 @@ void UTankAimingComponent::Initialise(UTankTurret* TurretToSet, UTankBarrel* Bar
 EFiringState UTankAimingComponent::GetFiringState() const
 { return FiringState; }
 
-int UTankAimingComponent::GetAmmoLeft() const
+int32 UTankAimingComponent::GetAmmoLeft() const
 { return AmmoLeft; }
 
 void UTankAimingComponent::AimAt(FVector HitLocation)
