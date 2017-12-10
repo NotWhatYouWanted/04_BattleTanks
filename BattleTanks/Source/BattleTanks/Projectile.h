@@ -7,8 +7,8 @@
 #include "Runtime/Engine/Classes/Components/PrimitiveComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Runtime/Engine/Classes/PhysicsEngine/RadialForceComponent.h"
 #include "Projectile.generated.h"
-
 
 UCLASS()
 class BATTLETANKS_API AProjectile : public AActor
@@ -36,9 +36,17 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Components)
 		UParticleSystemComponent* ImpactBlast = nullptr;
 
+	UPROPERTY(EditAnywhere, Category = Components)
+		URadialForceComponent* ExplosionForce = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, Category = Components)
+		float TimerDelay = 10.0f;
+
 private:	
 
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+
+	void OnTimerExpire();
 	
 };
